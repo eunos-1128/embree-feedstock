@@ -6,7 +6,9 @@ export TBBROOT=${PREFIX}
 
 extra_cmake_args=()
 
-if [[ "${target_platform}" == "linux-64" || "${target_platform}" == "osx-64" ]]; then
+if [[ "${target_platform}" == *"linux-64" ]] ; then
+    max_isa="AVX512"
+elif [[ "${target_platform}" == "osx-64" ]]; then
     max_isa="AVX2"
 elif [[ "${target_platform}" == "linux-aarch64" || "${target_platform}" == "osx-arm64" ]]; then
     max_isa="NEON2X"
